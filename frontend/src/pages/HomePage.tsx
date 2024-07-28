@@ -1,10 +1,11 @@
 import React from "react";
 import Layouts from "../layouts/Layouts";
+import HeroSection from "../components/homePage/HeroSection";
 
 function HomePage() {
   return (
     <Layouts>
-      <p>HomePage</p>
+      <HeroSection />
     </Layouts>
   );
 }
