@@ -9,7 +9,8 @@ function HeroSection() {
 
         <div className="relative z-20 max-w-[500px]">
           <p className="text-5xl text-white font-bold">
-            A piece of paradise just for you
+            A piece of <span className="text-yellow-400">paradise</span> just
+            for you
           </p>
           <p className="text-2xl text-white  pt-3">
             Book entire houses, villas, cabins and more
