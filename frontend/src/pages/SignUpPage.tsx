@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import Layouts from "../layouts/Layouts";
+import { useMutation } from "@tanstack/react-query";
+import * as apiClient from "../api-client";
 
-type RegisterFormData = {
+export type RegisterFormData = {
   firstName: string;
   lastName: string;
   email: string;
@@ -17,8 +19,26 @@ function SignUpPage() {
     formState: { errors },
   } = useForm<RegisterFormData>();
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  const { mutate } = useMutation({
+    mutationFn: apiClient.signUp,
+    onSuccess: () => {
+      console.log("Registration Successfully");
+    },
+  });
+
+  // const { mutate } = useMutation({
+  //   mutationFn: (formData: RegisterFormData) =>
+  //     fetch(`http://localhost:7000/api/users/sign-up`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     }),
+  // });
+
+  const onSubmit = handleSubmit((data: RegisterFormData) => {
+    mutate(data);
   });
   return (
     <Layouts>
