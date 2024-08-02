@@ -24,18 +24,10 @@ function SignUpPage() {
     onSuccess: () => {
       console.log("Registration Successfully");
     },
+    onError: (error: Error) => {
+      console.log(error);
+    },
   });
-
-  // const { mutate } = useMutation({
-  //   mutationFn: (formData: RegisterFormData) =>
-  //     fetch(`http://localhost:7000/api/users/sign-up`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     }),
-  // });
 
   const onSubmit = handleSubmit((data: RegisterFormData) => {
     mutate(data);
