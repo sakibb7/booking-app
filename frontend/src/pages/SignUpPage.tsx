@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import Layouts from "../layouts/Layouts";
 import { useMutation } from "@tanstack/react-query";
 import * as apiClient from "../api-client";
+import { useAppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export type RegisterFormData = {
   firstName: string;
@@ -12,6 +14,9 @@ export type RegisterFormData = {
 };
 
 function SignUpPage() {
+  const navigate = useNavigate();
+  const { showToast } = useAppContext();
+
   const {
     register,
     watch,
@@ -22,10 +27,11 @@ function SignUpPage() {
   const { mutate } = useMutation({
     mutationFn: apiClient.signUp,
     onSuccess: () => {
-      console.log("Registration Successfully");
+      showToast({ message: "Sign Up Successfully", type: "SUCCESS" });
+      navigate("/");
     },
     onError: (error: Error) => {
-      console.log(error);
+      showToast({ message: error.message, type: "ERROR" });
     },
   });
 
