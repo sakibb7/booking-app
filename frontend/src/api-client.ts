@@ -3,9 +3,9 @@ import { RegisterFormData } from "./pages/SignUpPage";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const signUp = async (formData: RegisterFormData) => {
-  console.log(API_BASE_URL);
-  const response = await fetch(`http://localhost:7000/api/users/sign-up`, {
+  const response = await fetch(`${API_BASE_URL}/api/users/sign-up`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -17,4 +17,16 @@ export const signUp = async (formData: RegisterFormData) => {
   if (!response.ok) {
     throw new Error(responseBody.message);
   }
+};
+
+export const validateToken = async () => {
+  const response = await fetch(`${API_BASE_URL}/api/auth/validate-token`, {
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("Token Invalid");
+  }
+
+  return response.json();
 };

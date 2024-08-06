@@ -2,8 +2,10 @@ import { LuDollarSign } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import usaLogo from "../../assets/images/usa-logo.png";
 import logo from "../../assets/images/icon.png";
+import { useAppContext } from "../../context/AppContext";
 
 export default function Header() {
+  const { isLoggedIn } = useAppContext();
   return (
     <header className="bg-gray-900 py-4">
       <div className="container flex justify-between items-center ">
@@ -22,20 +24,24 @@ export default function Header() {
             </div>
             <img src={usaLogo} alt="" className="size-6" />
           </div>
-          <div className="flex justify-end items-center gap-3">
-            <Link
-              to={"/sign-in"}
-              className=" font-medium text-p1  hover:underline duration-500"
-            >
-              Sign In
-            </Link>
-            <Link
-              to={"/sign-up"}
-              className="text-lg  font-medium border bg-p1 border-p1 rounded-md px-3 py-1 text-white duration-500 hover:bg-white hover:text-p1"
-            >
-              Sign Up
-            </Link>
-          </div>
+          {isLoggedIn ? (
+            <div className=" text-white">Sign Out</div>
+          ) : (
+            <div className="flex justify-end items-center gap-3">
+              <Link
+                to={"/sign-in"}
+                className=" font-medium text-p1  hover:underline duration-500"
+              >
+                Sign In
+              </Link>
+              <Link
+                to={"/sign-up"}
+                className="text-lg  font-medium border bg-p1 border-p1 rounded-md px-3 py-1 text-white duration-500 hover:bg-white hover:text-p1"
+              >
+                Sign Up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </header>
