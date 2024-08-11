@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import usaLogo from "../../assets/images/usa-logo.png";
 import logo from "../../assets/images/icon.png";
 import { useAppContext } from "../../context/AppContext";
+import SignOutButton from "../ui/SignOutButton";
 
 export default function Header() {
   const { isLoggedIn } = useAppContext();
@@ -25,7 +26,7 @@ export default function Header() {
             <img src={usaLogo} alt="" className="size-6" />
           </div>
           {isLoggedIn ? (
-            <div className=" text-white">Sign Out</div>
+            <SignOutButton />
           ) : (
             <div className="flex justify-end items-center gap-3">
               <Link
