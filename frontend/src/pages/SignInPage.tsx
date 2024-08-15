@@ -1,6 +1,6 @@
 import Layouts from "../layouts/Layouts";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as apiClient from "../api-client";
 import { useAppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -18,13 +18,15 @@ function SignInPage() {
   } = useForm<SignInFormData>();
 
   const { showToast } = useAppContext();
+  const queryClient = useQueryClient();
 
   const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: apiClient.signIn,
-    onSuccess: () => {
+    onSuccess: async () => {
       showToast({ message: "Sign In Successfully", type: "SUCCESS" });
+      await queryClient.invalidateQueries({ queryKey: ["validate-token"] });
       navigate("/");
     },
     onError: (error: Error) => {

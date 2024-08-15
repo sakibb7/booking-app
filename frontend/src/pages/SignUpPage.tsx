@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import Layouts from "../layouts/Layouts";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as apiClient from "../api-client";
 import { useAppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ export type RegisterFormData = {
 };
 
 function SignUpPage() {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { showToast } = useAppContext();
 
@@ -26,8 +27,9 @@ function SignUpPage() {
 
   const { mutate } = useMutation({
     mutationFn: apiClient.signUp,
-    onSuccess: () => {
+    onSuccess: async () => {
       showToast({ message: "Sign Up Successfully", type: "SUCCESS" });
+      await queryClient.invalidateQueries({ queryKey: ["validate-token"] });
       navigate("/");
     },
     onError: (error: Error) => {
