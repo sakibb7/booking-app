@@ -17,7 +17,11 @@ function ToastMessage({ message, type, onClose }: ToastProps) {
     };
   }, [onClose]);
 
-  return <div>{message}</div>;
+  return (
+    <div>
+      {message} {type}{" "}
+    </div>
+  );
 }
 
 export default ToastMessage;

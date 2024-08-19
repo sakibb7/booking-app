@@ -42,7 +42,7 @@ function SignInPage() {
     <Layouts>
       <div className="container flex justify-center items-center">
         <form onSubmit={onSubmit} className="pt-12 w-2/3 flex flex-col gap-5">
-          <h2 className="text-3xl font-semibold">Create an Account</h2>
+          <h2 className="text-3xl font-semibold">Sign In</h2>
 
           <label className="w-full">
             Email

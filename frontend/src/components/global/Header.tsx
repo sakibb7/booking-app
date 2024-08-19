@@ -26,7 +26,16 @@ export default function Header() {
             <img src={usaLogo} alt="" className="size-6" />
           </div>
           {isLoggedIn ? (
-            <SignOutButton />
+            <>
+              <Link
+                to={"/profile"}
+                className=" font-medium text-p1  hover:underline duration-500"
+              >
+                My Profile
+              </Link>
+
+              <SignOutButton />
+            </>
           ) : (
             <div className="flex justify-end items-center gap-3">
               <Link
