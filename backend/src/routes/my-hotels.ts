@@ -37,6 +37,7 @@ router.post(
   ],
   upload.array("imageFiles", 6),
   async (req: Request, res: Response) => {
+    console.log("UserId", req.userId);
     try {
       const imageFiles = req.files as Express.Multer.File[];
       const newHotel: HotelType = req.body;
