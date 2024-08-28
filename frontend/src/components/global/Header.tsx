@@ -28,10 +28,10 @@ export default function Header() {
           {isLoggedIn ? (
             <>
               <Link
-                to={"/profile"}
+                to={"/my-hotels"}
                 className=" font-medium text-p1  hover:underline duration-500"
               >
-                My Profile
+                My Hotels
               </Link>
 
               <SignOutButton />

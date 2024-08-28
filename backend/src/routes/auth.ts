@@ -17,7 +17,6 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      console.log("I'm here");
       return res.status(400).json({ message: errors.array() });
     }
 
@@ -52,7 +51,6 @@ router.post(
 
       res.status(200).json({ userId: user.id });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ message: "Something went wrong" });
     }
   }

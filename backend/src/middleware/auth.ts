@@ -13,17 +13,16 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies["auth_token"];
 
   if (!token) {
-    return res.status(401).json({ message: "unathorized" });
+    //if i return 401 it gives error
+    return res.status(200).json({ message: "unathorized 1" });
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string);
-
     req.userId = (decoded as JwtPayload).userId;
-    console.log(`Verifytoke userId:${req.userId}`, "json payload Id:");
     next();
   } catch (error) {
-    return res.status(401).json({ message: "unathorized" });
+    return res.status(401).json({ message: "unathorized 2" });
   }
 };
 
