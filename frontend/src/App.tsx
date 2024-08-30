@@ -6,6 +6,7 @@ import AddHotel from "./pages/AddHotel";
 import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import ProtectiveRoutes from "./components/ProtectiveRoutes";
+import SearchPage from "./pages/SearchPage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/search" element={<SearchPage />} />
 
         <Route
           path="/add-hotel"
