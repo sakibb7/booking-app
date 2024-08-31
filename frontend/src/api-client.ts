@@ -4,7 +4,7 @@ import { RegisterFormData } from "./pages/SignUpPage";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
-console.log(API_BASE_URL)
+console.log(API_BASE_URL);
 
 export const signUp = async (formData: RegisterFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/users/sign-up`, {
@@ -24,7 +24,7 @@ export const signUp = async (formData: RegisterFormData) => {
 };
 
 export const signIn = async (formData: SignInFormData) => {
-  console.log(API_BASE_URL)
+  console.log(API_BASE_URL);
   const response = await fetch(`${API_BASE_URL}/api/auth/sign-in`, {
     method: "POST",
     credentials: "include",
@@ -47,6 +47,8 @@ export const validateToken = async () => {
   if (!response.ok) {
     throw new Error("Token Invalid");
   }
+
+  console.log(response.ok);
 
   return response.json();
 };
@@ -117,31 +119,34 @@ export const updateMyHotelById = async (hotelFormData: FormData) => {
   return response.json();
 };
 
-
 export type SearchParams = {
-  destination:string;
-  adultCount:string;
-  childCount:string;
-  checkIn:string;
-  checkOut:string;
-  page:string;
-}
+  destination: string;
+  adultCount: string;
+  childCount: string;
+  checkIn: string;
+  checkOut: string;
+  page: string;
+};
 
-export const searchHotels = async(searchParams:SearchParams):Promise<HotelSearchResponse> => {
-  const queryParams = new URLSearchParams()
+export const searchHotels = async (
+  searchParams: SearchParams
+): Promise<HotelSearchResponse> => {
+  const queryParams = new URLSearchParams();
 
-  queryParams.append("destination",searchParams.destination || "")
-  queryParams.append("adultCount",searchParams.adultCount || "")
-  queryParams.append("childCount",searchParams.childCount || "")
-  queryParams.append("checkIn",searchParams.checkIn || "")
-  queryParams.append("chekOut",searchParams.checkOut || "")
-  queryParams.append("page",searchParams.page || "")
+  queryParams.append("destination", searchParams.destination || "");
+  queryParams.append("adultCount", searchParams.adultCount || "");
+  queryParams.append("childCount", searchParams.childCount || "");
+  queryParams.append("checkIn", searchParams.checkIn || "");
+  queryParams.append("chekOut", searchParams.checkOut || "");
+  queryParams.append("page", searchParams.page || "");
 
-  const response = await fetch(`${API_BASE_URL}/api/hotels/search?${queryParams}`)
+  const response = await fetch(
+    `${API_BASE_URL}/api/hotels/search?${queryParams}`
+  );
 
-  if(!response.ok){
-    throw new Error("Error fetching hotel")
+  if (!response.ok) {
+    throw new Error("Error fetching hotel");
   }
 
-  return response.json()
-}
+  return response.json();
+};

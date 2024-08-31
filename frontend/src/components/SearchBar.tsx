@@ -3,6 +3,7 @@ import { useSearchContext } from "../context/SearchContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
+import { PiMapPin } from "react-icons/pi";
 
 export default function SearchBar() {
   const search = useSearchContext();
@@ -33,64 +34,84 @@ export default function SearchBar() {
   maxDate.setFullYear(maxDate.getFullYear() + 1);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="">
+    <form
+      onSubmit={handleSubmit}
+      className=" bg-white shadow-xl w-[1000px] relative z-10 flex justify-between items-center p-6 mt-32 text-slate-700 text-sm rounded-md"
+    >
+      <div className=" flex justify-start items-center gap-2 border p-4 rounded-md ">
+        <PiMapPin />
         <input
           type="text"
           value={destination}
-          placeholder="Where are you going?"
+          placeholder="Select Location"
           onChange={(e) => setDestination(e.target.value)}
+          className="bg-transparent text-sm placeholder:text-sm outline-none max-w-[150px] w-full"
         />
       </div>
-      <div className="">
+      <div className="border p-4 rounded-md flex justify-center items-center">
+        <p className="">Adults:</p>
         <label>
-          Aduls:
           <input
             type="number"
             min={1}
             max={20}
             value={adultCount}
             onChange={(e) => setAdultCount(parseInt(e.target.value))}
+            className="outline-none max-w-10 text-center"
           />
         </label>
       </div>
-      <div className="">
+      <div className="border p-4 rounded-md">
         <label>
-          Child Count:
+          Child:
           <input
             type="number"
             min={0}
             max={20}
             value={childCount}
             onChange={(e) => setChildCount(parseInt(e.target.value))}
+            className="outline-none pl-4 max-w-16 "
           />
         </label>
       </div>
-      <DatePicker
-        selected={checkIn}
-        onChange={(date) => setCheckIn(date as Date)}
-        selectsStart
-        startDate={checkIn}
-        endDate={checkOut}
-        minDate={minDate}
-        maxDate={maxDate}
-        placeholderText="Check In Date"
-        className="relative z-50"
-        wrapperClassName="min-w-full"
-      />
-      <DatePicker
-        selected={checkOut}
-        onChange={(date) => setCheckOut(date as Date)}
-        selectsStart
-        startDate={checkIn}
-        endDate={checkOut}
-        minDate={minDate}
-        maxDate={maxDate}
-        placeholderText="Check In Date"
-        className="relative z-50"
-      />
+      <div className="border p-1 pl-4 rounded-md overflow-hidden ">
+        <p className="pb-1">Start Date:</p>
+        <DatePicker
+          selected={checkIn}
+          onChange={(date) => setCheckIn(date as Date)}
+          selectsStart
+          startDate={checkIn}
+          endDate={checkOut}
+          minDate={minDate}
+          maxDate={maxDate}
+          placeholderText="Check In Date"
+          className="relative z-50 outline-none "
+          wrapperClassName="max-w-[150px]"
+        />
+      </div>
+      <div className="border p-1 pl-4 rounded-md overflow-hidden ">
+        <p className="pb-1">End Date:</p>
+        <DatePicker
+          selected={checkOut}
+          onChange={(date) => setCheckOut(date as Date)}
+          selectsStart
+          startDate={checkIn}
+          endDate={checkOut}
+          minDate={minDate}
+          maxDate={maxDate}
+          placeholderText="Check In Date"
+          className="relative z-50 outline-none"
+          wrapperClassName="max-w-[150px]"
+        />
+      </div>
+      {/* 
+      
+      
+      */}
 
-      <button>Search</button>
+      <button className=" px-6 py-4 rounded-md bg-slate-700 text-white">
+        Search
+      </button>
     </form>
   );
 }

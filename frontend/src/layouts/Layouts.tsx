@@ -1,5 +1,5 @@
 import Header from "../components/global/Header";
-import SearchBar from "../components/SearchBar";
+// import SearchBar from "../components/SearchBar";
 import { useAppContext } from "../context/AppContext";
 
 export default function Layouts({ children }: { children: React.ReactNode }) {
@@ -10,9 +10,7 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <div className="container">
-        <SearchBar />
-      </div>
+      <div className="container">{/* <SearchBar /> */}</div>
       {children}
     </>
   );

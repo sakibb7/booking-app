@@ -27,6 +27,8 @@ export const AppContextProvider = ({
     queryFn: apiClient.validateToken,
     retry: false,
   });
+
+  console.log(isError);
   return (
     <AppContext.Provider
       value={{

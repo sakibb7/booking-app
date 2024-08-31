@@ -26,7 +26,7 @@ function SignOutButton() {
   };
 
   return (
-    <div onClick={handleClick} className="text-white cursor-pointer">
+    <div onClick={handleClick} className=" cursor-pointer">
       Sign Out
     </div>
   );
