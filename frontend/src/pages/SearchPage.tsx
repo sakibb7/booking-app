@@ -23,5 +23,12 @@ export default function SearchPage() {
 
   console.log(hotelData);
 
-  return <div></div>;
+  return (
+    <div>
+      {page}{" "}
+      <button className="" onClick={() => setPage(3)}>
+        set Page
+      </button>
+    </div>
+  );
 }
