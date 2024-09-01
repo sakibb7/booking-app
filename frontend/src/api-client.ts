@@ -4,8 +4,6 @@ import { RegisterFormData } from "./pages/SignUpPage";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
-console.log(API_BASE_URL);
-
 export const signUp = async (formData: RegisterFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/users/sign-up`, {
     method: "POST",
@@ -24,7 +22,6 @@ export const signUp = async (formData: RegisterFormData) => {
 };
 
 export const signIn = async (formData: SignInFormData) => {
-  console.log(API_BASE_URL);
   const response = await fetch(`${API_BASE_URL}/api/auth/sign-in`, {
     method: "POST",
     credentials: "include",
@@ -120,12 +117,17 @@ export const updateMyHotelById = async (hotelFormData: FormData) => {
 };
 
 export type SearchParams = {
-  destination: string;
-  adultCount: string;
-  childCount: string;
-  checkIn: string;
-  checkOut: string;
-  page: string;
+  destination?: string;
+  adultCount?: string;
+  childCount?: string;
+  checkIn?: string;
+  checkOut?: string;
+  page?: string;
+  facilities?: string[];
+  types?: string[];
+  stars?: string[];
+  maxPrice?: string;
+  sortOption?: string;
 };
 
 export const searchHotels = async (
@@ -139,6 +141,17 @@ export const searchHotels = async (
   queryParams.append("checkIn", searchParams.checkIn || "");
   queryParams.append("chekOut", searchParams.checkOut || "");
   queryParams.append("page", searchParams.page || "");
+
+  queryParams.append("maxPrice", searchParams.maxPrice || "");
+  queryParams.append("sortOption", searchParams.sortOption || "");
+
+  searchParams.facilities?.forEach((facility) =>
+    queryParams.append("facilities", facility)
+  );
+
+  searchParams.types?.forEach((type) => queryParams.append("types", type));
+
+  searchParams.stars?.forEach((star) => queryParams.append("stars", star));
 
   const response = await fetch(
     `${API_BASE_URL}/api/hotels/search?${queryParams}`
