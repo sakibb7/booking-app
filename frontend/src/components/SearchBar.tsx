@@ -49,7 +49,7 @@ export default function SearchBar() {
         />
       </div>
       <div className="border p-4 rounded-md flex justify-center items-center">
-        <p className="">Adults:</p>
+        <p className="text-slate-400">Adults:</p>
         <label>
           <input
             type="number"
@@ -61,9 +61,9 @@ export default function SearchBar() {
           />
         </label>
       </div>
-      <div className="border p-4 rounded-md">
+      <div className="border p-4 rounded-md flex justify-center items-center">
+        <p className="text-slate-400">Child:</p>
         <label>
-          Child:
           <input
             type="number"
             min={0}
@@ -75,7 +75,7 @@ export default function SearchBar() {
         </label>
       </div>
       <div className="border p-1 pl-4 rounded-md overflow-hidden ">
-        <p className="pb-1">Start Date:</p>
+        <p className="pb-1 text-slate-400">Start Date:</p>
         <DatePicker
           selected={checkIn}
           onChange={(date) => setCheckIn(date as Date)}
@@ -90,7 +90,7 @@ export default function SearchBar() {
         />
       </div>
       <div className="border p-1 pl-4 rounded-md overflow-hidden ">
-        <p className="pb-1">End Date:</p>
+        <p className="pb-1 text-slate-400">End Date:</p>
         <DatePicker
           selected={checkOut}
           onChange={(date) => setCheckOut(date as Date)}

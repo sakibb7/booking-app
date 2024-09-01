@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchContext } from "../context/SearchContext";
 import * as apiClient from "../api-client";
 import { useState } from "react";
+import Pagination from "../components/Pagination";
 
 export default function SearchPage() {
   const search = useSearchContext();
@@ -21,14 +22,19 @@ export default function SearchPage() {
     queryFn: () => apiClient.searchHotels(searchParams),
   });
 
-  console.log(hotelData);
-
   return (
     <div>
-      {page}{" "}
-      <button className="" onClick={() => setPage(3)}>
-        set Page
-      </button>
+      {hotelData?.data.map((hotel) => (
+        <div className="" key={hotel._id}>
+          {hotel.name}
+          <img src={hotel.imageUrls[0]} alt="" />
+        </div>
+      ))}
+      <Pagination
+        page={hotelData?.pagination.page || 1}
+        pages={hotelData?.pagination.pages || 1}
+        onPageChange={(page) => setPage(page)}
+      />
     </div>
   );
 }
