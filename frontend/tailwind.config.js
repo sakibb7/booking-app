@@ -13,7 +13,14 @@ export default {
         "4xl": "1800px",
       },
       colors: {
-        p1: "#03AED2",
+        p1: "#008DDA",
+        p2: "#41C9E2",
+        p3: "#ACE2E1",
+        p4: "#F7EEDD",
+      },
+      padding: {
+        30: "120px",
+        15: "60px",
       },
     },
   },

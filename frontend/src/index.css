@@ -48,3 +48,17 @@ body{
     @apply mx-auto 4xl:max-w-[1760px];
   }
 }
+
+
+/* Box shadow styles */
+.box-shadow-1 {
+  box-shadow:
+    0px 20px 24px -6px rgba(16, 24, 40, 0.08),
+    0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+}
+.box-shadow-2 {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+.box-shadow-3 {
+  box-shadow: 0px 24px 48px -12px rgba(0, 101, 255, 0.1);
+}

@@ -4,12 +4,11 @@ import { PiPlayFill } from "react-icons/pi";
 import SearchBar from "../SearchBar";
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-12">
+    <section className="relative overflow-hidden pt-4">
       <section className=" container flex justify-between items-center gap-8">
         <div className="w-1/2">
           <h1 className="text-6xl font-bold text-slate-800">
-            <span className="text-orange-500">Best Holiday</span> Starts From
-            Here
+            <span className="text-p1">Best Holiday</span> Starts From Here
           </h1>
           <p className=" font-medium pt-3 text-slate-500">
             Planning for a trip? We will organize your trip with the best places
@@ -19,7 +18,7 @@ function HeroSection() {
           <div className="flex justify-start items-center gap-4 pt-6">
             <Link
               to={"/all-hotels"}
-              className="text-orange-500 py-2 px-3 rounded-md font-medium bg-orange-50"
+              className="text-p1 py-2 px-3 rounded-md font-medium bg-sky-50"
             >
               Discover Now
             </Link>

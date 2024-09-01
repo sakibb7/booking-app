@@ -5,17 +5,21 @@ import logo from "../../assets/images/icon.png";
 import { useAppContext } from "../../context/AppContext";
 import SignOutButton from "../ui/SignOutButton";
 import { useState } from "react";
+import userImg from "../../assets/images/user-sample-img.jpg";
+import { PiGear, PiHouse, PiSignOut, PiUser } from "react-icons/pi";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default function Header() {
   const { isLoggedIn } = useAppContext();
   const [showRegionModal, setShowRegionModal] = useState(false);
+  const { modalRef, modal, setModal } = useClickOutside();
   return (
     <header className=" py-4">
       <div className="container flex justify-between items-center ">
         <div className="flex justify-start items-center">
           <img src={logo} alt="" className="size-10" />
           <Link to={"/"} className="text-xl font-semibold  ">
-            Bookinger
+            Bookingly
           </Link>
         </div>
 
@@ -88,14 +92,57 @@ export default function Header() {
           </div>
           {isLoggedIn ? (
             <>
-              <Link
-                to={"/my-hotels"}
-                className=" font-medium text-p1  hover:underline duration-500"
-              >
-                My Hotels
-              </Link>
+              <div className="relative">
+                <div
+                  className=""
+                  onClick={() => setModal((prev) => !prev)}
+                  ref={modalRef}
+                >
+                  <img
+                    src={userImg}
+                    alt=""
+                    className="size-10 rounded-full object-cover cursor-pointer"
+                  />
+                </div>
 
-              <SignOutButton />
+                <div
+                  className={`absolute top-12 right-0 bg-white flex justify-start items-start box-shadow-1 border border-slate-100 z-20 rounded-md duration-300 text-sm ${
+                    modal
+                      ? "translate-y-0 opacity-100 visible"
+                      : "translate-y-2 opacity-0 invisible"
+                  }`}
+                >
+                  <ul className="flex flex-col">
+                    <li className="">
+                      <Link
+                        to={"/my-hotels"}
+                        className="px-6 py-2 text-nowrap flex justify-start items-center gap-2 hover:bg-sky-50 duration-300"
+                      >
+                        <PiUser /> Profile
+                      </Link>
+                    </li>
+                    <li className="">
+                      <Link
+                        to={"/my-hotels"}
+                        className="px-6 py-2 text-nowrap flex justify-start items-center gap-2 hover:bg-sky-50 duration-300"
+                      >
+                        <PiHouse /> My Hotels
+                      </Link>
+                    </li>
+                    <li className="">
+                      <Link
+                        to={"/my-hotels"}
+                        className="px-6 py-2 text-nowrap flex justify-start items-center gap-2 hover:bg-sky-50 duration-300"
+                      >
+                        <PiGear /> Settings
+                      </Link>
+                    </li>
+                    <li className="px-6 py-2 flex justify-start items-center gap-2 hover:bg-sky-50 duration-300">
+                      <PiSignOut /> <SignOutButton />
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </>
           ) : (
             <div className="flex justify-end items-center gap-3">
