@@ -9,12 +9,11 @@ router.get("/search", async (req: Request, res: Response) => {
     const query = constructedSearchQuery(req.query);
 
     let sortOptions = {};
-
-    switch (req.query.sortOptions) {
+    switch (req.query.sortOption) {
       case "starRating":
         sortOptions = { starRating: -1 };
         break;
-      case "pricePerNigtAsc":
+      case "pricePerNightAsc":
         sortOptions = { pricePerNight: 1 };
         break;
       case "pricePerNightDesc":

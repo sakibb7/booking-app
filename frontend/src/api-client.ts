@@ -45,8 +45,6 @@ export const validateToken = async () => {
     throw new Error("Token Invalid");
   }
 
-  console.log(response.ok);
-
   return response.json();
 };
 
