@@ -7,6 +7,7 @@ import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import ProtectiveRoutes from "./components/ProtectiveRoutes";
 import SearchPage from "./pages/SearchPage";
+import HotelDetails from "./pages/HotelDetails";
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
             </ProtectiveRoutes>
           }
         />
+        <Route path="/details/:hotelId" element={<HotelDetails />} />
       </Routes>
     </Router>
   );
