@@ -7,6 +7,7 @@ import StarRatingFilter from "../components/StarRatingFilter";
 import HotelTypeFilter from "../components/HotelTypeFilter";
 import HotelFacilities from "../components/FacilitiesFilter";
 import PriceFilter from "../components/PriceFilter";
+import { Link } from "react-router-dom";
 
 export default function SearchPage() {
   const search = useSearchContext();
@@ -119,6 +120,9 @@ export default function SearchPage() {
           {hotel.starRating}
           {hotel.type}
           {hotel.pricePerNight}
+          <Link to={`/details/${hotel._id}`} className="text-red-600">
+            Details
+          </Link>
         </div>
       ))}
       <Pagination

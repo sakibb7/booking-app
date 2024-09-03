@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as apiClient from "../api-client";
 import { useAppContext } from "../context/AppContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signInBg from "../assets/images/sign-in-img.jpg";
 import logo from "../assets/images/icon.png";
 
@@ -22,13 +22,14 @@ function SignInPage() {
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { mutate } = useMutation({
     mutationFn: apiClient.signIn,
     onSuccess: async () => {
       showToast({ message: "Sign In Successfully", type: "SUCCESS" });
       await queryClient.invalidateQueries({ queryKey: ["validate-token"] });
-      navigate("/");
+      navigate(location.state?.from?.pathname || "/");
     },
     onError: (error: Error) => {
       showToast({ message: error.message, type: "ERROR" });

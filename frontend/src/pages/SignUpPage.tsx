@@ -68,7 +68,7 @@ function SignUpPage() {
                 First Name
                 <div
                   className={`border ${
-                    errors.firstName ? "border-red-500" : "border-gray-500"
+                    errors.firstName ? "border-red-500" : "border-slate-300"
                   } rounded-md p-2`}
                 >
                   <input
@@ -88,7 +88,7 @@ function SignUpPage() {
               </label>
               <label className="w-full text-slate-500 text-sm">
                 Last Name
-                <div className="border border-gray-500 rounded-md p-2">
+                <div className="border border-slate-300 rounded-md p-2">
                   <input
                     type="text"
                     placeholder="Last Name"
@@ -107,7 +107,7 @@ function SignUpPage() {
             </div>
             <label className="w-full text-slate-500 text-sm">
               Email
-              <div className="border border-gray-500 rounded-md p-2">
+              <div className="border border-slate-300 rounded-md p-2">
                 <input
                   type="email"
                   placeholder="example@mail.com"
@@ -123,7 +123,7 @@ function SignUpPage() {
             </label>
             <label className="w-full text-slate-500 text-sm">
               Password
-              <div className="border border-gray-500 rounded-md p-2">
+              <div className="border border-slate-300 rounded-md p-2">
                 <input
                   type="password"
                   placeholder="password"
@@ -143,10 +143,10 @@ function SignUpPage() {
             </label>
             <label className="w-full text-slate-500 text-sm">
               Confirm Password
-              <div className="border border-gray-500 rounded-md p-2">
+              <div className="border border-slate-300 rounded-md p-2">
                 <input
                   type="password"
-                  placeholder="password"
+                  placeholder="Confirm password"
                   className="w-full outline-none bg-transparent text-gray-700"
                   {...register("confirmPassword", {
                     validate: (val) => {
