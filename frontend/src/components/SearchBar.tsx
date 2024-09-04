@@ -36,7 +36,7 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className=" bg-white box-shadow-3 w-[1000px] relative z-10 flex justify-between items-center p-6 mt-32 text-slate-700 text-sm rounded-md border border-slate-200"
+      className=" bg-white box-shadow-3 w-[1000px] relative z-10 flex justify-between items-center p-6 text-slate-700 text-sm rounded-md border border-slate-200"
     >
       <div className=" flex justify-start items-center gap-2 border p-4 rounded-md ">
         <PiMapPin />

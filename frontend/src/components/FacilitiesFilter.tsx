@@ -10,20 +10,24 @@ export default function HotelFacilities({
   onChange,
 }: Props) {
   return (
-    <div className="border border-slate-300 pb-5">
-      <h4 className="text-2x font-semibold">Hotel facilities</h4>
-      {hotelFacilities.map((facility, idx) => (
-        <label htmlFor="" key={idx}>
-          <input
-            type="checkbox"
-            className="rounded"
-            value={facility}
-            checked={selectedFacilities.includes(facility)}
-            onChange={onChange}
-          />
-          <span>{facility}</span>
-        </label>
-      ))}
+    <div className="border border-slate-300 p-6 rounded-xl">
+      <h4 className="text-lg text-neutral-900 font-semibold pb-3">
+        Hotel facilities
+      </h4>
+      <div className=" flex flex-wrap justify-start items-center gap-3">
+        {hotelFacilities.map((facility, idx) => (
+          <label htmlFor="" key={idx}>
+            <input
+              type="checkbox"
+              className="rounded"
+              value={facility}
+              checked={selectedFacilities.includes(facility)}
+              onChange={onChange}
+            />
+            <span className="pl-2">{facility}</span>
+          </label>
+        ))}
+      </div>
     </div>
   );
 }

@@ -5,14 +5,14 @@ type Props = {
 
 export default function PriceFilter({ selectedPrice, onChange }: Props) {
   return (
-    <div>
-      PriceFilter
+    <div className="border border-slate-300 p-6 rounded-xl">
+      <h4 className="text-lg text-neutral-900 font-semibold pb-3">
+        Your budget (per night)
+      </h4>
       <select
         value={selectedPrice}
         onChange={(e) => {
           onChange(e.target.value ? parseInt(e.target.value) : undefined);
-
-          console.log(e.target.value);
         }}
       >
         <option value="">Select Max Price</option>{" "}

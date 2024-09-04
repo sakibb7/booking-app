@@ -36,7 +36,9 @@ function HeroSection() {
             </div>
           </div>
 
-          <SearchBar />
+          <div className="mt-32">
+            <SearchBar />
+          </div>
         </div>
         <div className="">
           <img src={heroImg} alt="" className="rounded-xl max-w-[550px]" />
