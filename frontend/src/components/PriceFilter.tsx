@@ -13,7 +13,13 @@ export default function PriceFilter({ selectedPrice, onChange }: Props) {
         Your budget (per night)
       </h4>
 
-      <Slider max={500} value={selectedPrice} onChange={onChange} />
+      <Slider
+        max={500}
+        value={selectedPrice}
+        onChange={(e) => {
+          onChange(e as number);
+        }}
+      />
       <p className="pt-3">{selectedPrice}</p>
       {/* <select
         value={selectedPrice}

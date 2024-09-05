@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@types/rc-slider": "^9.3.1",
-    "rc-slider": "^11.1.5",
-    "react-range-slider-input": "^3.0.7"
-  }
-}
