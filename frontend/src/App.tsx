@@ -8,6 +8,7 @@ import EditHotel from "./pages/EditHotel";
 import ProtectiveRoutes from "./components/ProtectiveRoutes";
 import SearchPage from "./pages/SearchPage";
 import HotelDetails from "./pages/HotelDetails";
+import Booking from "./pages/Booking";
 
 export default function App() {
   return (
@@ -18,6 +19,14 @@ export default function App() {
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/search" element={<SearchPage />} />
 
+        <Route
+          path="/hotel/:hotelId/booking"
+          element={
+            <ProtectiveRoutes>
+              <Booking />
+            </ProtectiveRoutes>
+          }
+        />
         <Route
           path="/add-hotel"
           element={
