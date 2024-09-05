@@ -1,3 +1,6 @@
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+
 type Props = {
   selectedPrice?: number;
   onChange: (value?: number) => void;
@@ -9,7 +12,10 @@ export default function PriceFilter({ selectedPrice, onChange }: Props) {
       <h4 className="text-lg text-neutral-900 font-semibold pb-3">
         Your budget (per night)
       </h4>
-      <select
+
+      <Slider max={500} value={selectedPrice} onChange={onChange} />
+      <p className="pt-3">{selectedPrice}</p>
+      {/* <select
         value={selectedPrice}
         onChange={(e) => {
           onChange(e.target.value ? parseInt(e.target.value) : undefined);
@@ -21,7 +27,7 @@ export default function PriceFilter({ selectedPrice, onChange }: Props) {
             {price}
           </option>
         ))}
-      </select>
+      </select> */}
     </div>
   );
 }

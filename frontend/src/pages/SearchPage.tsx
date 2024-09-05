@@ -138,7 +138,7 @@ export default function SearchPage() {
             <div className="flex justify-between items-start gap-6 flex-col pt-8">
               {hotelData?.data.map((hotel) => (
                 <div
-                  className="flex justify-start items-center gap-6 bg-slate-50 rounded-xl"
+                  className="flex justify-start items-center gap-6 bg-slate-50 rounded-xl w-full"
                   key={hotel._id}
                 >
                   <div className=" w-[350px] h-[250px] rounded-xl overflow-hidden">
@@ -148,7 +148,7 @@ export default function SearchPage() {
                       className=" h-full w-full object-cover"
                     />
                   </div>
-                  <div className="pr-6">
+                  <div className="pr-6 w-full">
                     <div className="flex justify-between items-center">
                       <div className="flex justify-start items-center pb-1">
                         {Array.from({ length: hotel.starRating }).map(() => (
