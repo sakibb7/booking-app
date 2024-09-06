@@ -9,6 +9,7 @@ import ProtectiveRoutes from "./components/ProtectiveRoutes";
 import SearchPage from "./pages/SearchPage";
 import HotelDetails from "./pages/HotelDetails";
 import Booking from "./pages/Booking";
+import MyBookings from "./pages/MyBookings";
 
 export default function App() {
   return (
@@ -40,6 +41,14 @@ export default function App() {
           element={
             <ProtectiveRoutes>
               <MyHotels />
+            </ProtectiveRoutes>
+          }
+        />
+        <Route
+          path="/my-bookings"
+          element={
+            <ProtectiveRoutes>
+              <MyBookings />
             </ProtectiveRoutes>
           }
         />

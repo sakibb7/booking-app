@@ -147,10 +147,14 @@ router.post(
         userId: req.userId,
       };
 
+      console.log("Booking hotel updating");
+
       const hotel = await Hotel.findOneAndUpdate(
         { _id: req.params.hotelId },
         { $push: { bookings: newBooking } }
       );
+
+      console.log("Booking hotel update complete");
 
       if (!hotel) {
         return res.status(400).json({ message: "Hotel not found" });

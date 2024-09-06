@@ -69,6 +69,7 @@ export default function BookingForm({ currentUser, paymentIntent }: Props) {
       },
     });
 
+    console.log("this function ran", result.paymentIntent?.status);
     if (result.paymentIntent?.status === "succeeded") {
       bookRoom({ ...formData, paymentIntentId: result.paymentIntent.id });
     }
